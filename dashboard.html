@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+
+    <style>
+        :root {
+            --s: 0.5;
+        }
+
+        body {
+
+            overflow: hidden;
+            zoom: var(--s);
+        }
+
+        .dashboard {
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 15%;
+            height: 1000vh;
+            background: #174046;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .sidebar .logo {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .sidebar nav a {
+            display: block;
+            padding: 12px 0;
+            color: white;
+            text-decoration: none;
+            opacity: 0.85;
+            font-size: 15px;
+        }
+
+        .sidebar nav a.active {
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        .sidebar nav a:hover {
+            opacity: 1;
+        }
+
+        /* Content */
+        .content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        /* Header */
+        .dash-header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .dash-header .subtitle {
+            color: #555;
+            margin-top: 6px;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .card-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        .trend {
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .trend.positive { color: #0E8612; }
+        .trend.negative { color: #d9534f; }
+        .trend.neutral { color: #777; }
+
+        /* Graph Block */
+        .graph-block {
+            margin-top: 40px;
+        }
+
+        .graph-title {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .graph-placeholder {
+            background: white;
+            height: 260px;
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #999;
+        }
+
+        /* Behaviors */
+        .behaviors {
+            margin-top: 45px;
+            margin-left: 15px;
+        }
+
+        .behaviors h2 {
+            margin-bottom: 20px;
+        }
+
+        .behavior-list {
+            background: white;
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .behavior {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .behavior:last-child {
+            border-bottom: none;
+        }
+
+        .behavior span {
+            font-weight: bold;
+        }
+
+        .graph-behavior {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        @media (max-width: calc(938px*var(--s))) {
+            .sidebar {
+                display: none;
+            }
+
+            .graph-behavior {
+                flex-direction: column;
+            }
+
+            .cards {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/dashboard-BqYXanGm.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/styles-DX1C9CZR.js">
+  <link rel="stylesheet" crossorigin href="/assets/styles-BkppGE8m.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 class="logo">Reboot The Planet</h2>
+        <nav>
+            <a class="active" href="#">Vue d’ensemble</a>
+            <a href="#">Équipe</a>
+            <a href="#">Emails</a>
+            <a href="#">Streaming</a>
+            <a href="#">Cloud</a>
+            <a href="#">Paramètres</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+
+        <!-- Header -->
+        <div class="dash-header">
+            <h1>Tableau de bord</h1>
+            <p class="subtitle">Suivez et réduisez l’impact numérique de votre entreprise</p>
+        </div>
+
+        <!-- Cards -->
+        <div class="cards">
+            <div class="card">
+                <p class="card-title">Consommation moyenne</p>
+                <h2>142 Mo / employé</h2>
+                <p class="trend positive">↓ -12% cette semaine</p>
+            </div>
+
+            <div class="card">
+                <p class="card-title">Émissions estimées</p>
+                <h2>7.4 kg CO₂</h2>
+                <p class="trend neutral">= stable</p>
+            </div>
+
+            <div class="card">
+                <p class="card-title">Emails envoyés</p>
+                <h2>12 430</h2>
+                <p class="trend positive">↓ -8% vs. mois dernier</p>
+            </div>
+
+            <div class="card">
+                <p class="card-title">Stockage cloud</p>
+                <h2>863 Go</h2>
+                <p class="trend negative">↑ +5% cette semaine</p>
+            </div>
+        </div>
+
+        <!-- Graphique placeholder -->
+
+        <div class="graph-behavior">
+
+
+            <div class="graph-block">
+                <h2>Évolution de la consommation totale</h2>
+                <canvas class="graph-placeholder">
+                </canvas>
+            </div>
+
+            <!-- Section comportements -->
+            <div class="behaviors">
+                <h2>Comportements les plus énergivores</h2>
+                <div class="behavior-list">
+                    <div class="behavior">
+                        <p>Envois d’emails internes trop volumineux</p>
+                        <span>32%</span>
+                    </div>
+                    <div class="behavior">
+                        <p>Streaming en HD pendant les réunions</p>
+                        <span>27%</span>
+                    </div>
+                    <div class="behavior">
+                        <p>Fichiers stockés non nettoyés</p>
+                        <span>19%</span>
+                    </div>
+                    <div class="behavior">
+                        <p>Navigation web intensive</p>
+                        <span>15%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+
+</body>
+</html>
