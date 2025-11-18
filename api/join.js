@@ -13,9 +13,8 @@ export default async function handler(req, res) {
         const data = parse(body); // Form data
         console.log(data);
         datas.push(data);
+        console.log(datas);
     });
 
     return res.status(200).json({ message: 'Formulaire bien reçu !' });
 }
-
-setInterval(() => console.log(datas), 60000)
