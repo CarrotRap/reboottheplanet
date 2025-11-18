@@ -10,7 +10,6 @@ export default async function handler(req, res) {
     req.on('end', () => {
         const data = parse(body); // Form data
         console.log(data);
-        res.status(200).json({ message: 'OK', data });
     });
 
     return res.status(200).json({ message: 'Formulaire bien reçu !' });
